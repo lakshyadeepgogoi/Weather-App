@@ -177,29 +177,57 @@ searchForm.addEventListener("submit", (e) => {
         fetchSearchWeatherInfo(cityName);
 })
 
+// async function fetchSearchWeatherInfo(city) {
+//     loadingScreen.classList.add("active");
+//     userInfoContainer.classList.remove("active");
+//     grantAccessContainer.classList.remove("active");
+
+//     try {
+//         const response = await fetch(
+//             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+//           );
+//         const data = await res.json();
+//         if(!data.sys){
+//             throw data;
+//         }
+//         loadingScreen.classList.remove("active");
+//         userInfoContainer.classList.add("active");
+//         renderWeatherInfo(data);
+//     }
+//     catch(error) {
+//         // console.log("Search - Api Fetch Error", error.message);
+//         loadingScreen.classList.remove("active");
+//         apiErrorContainer.classList.add("active");
+//         apiErrorMessage.innerText = `${error?.message}`;
+//         apiErrorBtn.style.display = "none";
+//       }
+    
+// }
+
+
+// fetch data from API - user weather info
 async function fetchSearchWeatherInfo(city) {
     loadingScreen.classList.add("active");
     userInfoContainer.classList.remove("active");
-    grantAccessContainer.classList.remove("active");
-
+    apiErrorContainer.classList.remove("active");
+  
     try {
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-          );
-        const data = await response.json();
-        if(!data.sys){
-            throw data;
-        }
-        loadingScreen.classList.remove("active");
-        userInfoContainer.classList.add("active");
-        renderWeatherInfo(data);
-    }
-    catch(error) {
-        // console.log("Search - Api Fetch Error", error.message);
-        loadingScreen.classList.remove("active");
-        apiErrorContainer.classList.add("active");
-        apiErrorMessage.innerText = `${error?.message}`;
-        apiErrorBtn.style.display = "none";
+      const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+      );
+      const data = await res.json();
+      // console.log("Search - Api Fetch Data", data);
+      if (!data.sys) {
+        throw data;
       }
-    
-}
+      loadingScreen.classList.remove("active");
+      userInfoContainer.classList.add("active");
+      renderWeatherInfo(data);
+    } catch (error) {
+      // console.log("Search - Api Fetch Error", error.message);
+      loadingScreen.classList.remove("active");
+      apiErrorContainer.classList.add("active");
+      apiErrorMessage.innerText = `${error?.message}`;
+      apiErrorBtn.style.display = "none";
+    }
+  }
