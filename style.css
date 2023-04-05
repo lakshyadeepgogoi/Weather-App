@@ -19,6 +19,7 @@
     height: 100vh;
     color: var(--colorLight2);
     background-image: linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
+    
 }
 
 h1{
@@ -265,6 +266,7 @@ h1{
         font-size: 1.75rem;
     }
 
+
     .tab-container {
         margin-top: 2rem;
         width: 80%;
@@ -273,6 +275,14 @@ h1{
     .tab {
         font-size: 0.75rem;
     }
+    .wrapper{
+        height: 130vh;
+    }
+
+   
+
+}
+@media (max-width: 768px) {
     .parameter-container {
         flex-direction: column;
         align-items: center;
@@ -282,3 +292,4 @@ h1{
         width: 100%;
     }
 }
+
