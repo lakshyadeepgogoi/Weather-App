@@ -239,3 +239,46 @@ h1{
     border-radius: 100%;
     margin-bottom: 1px;
 }
+.api-error-container {
+    display: none;
+}
+
+.api-error-container.active {
+    display: flex;
+    gap: 1rem 0;
+}
+
+.api-error-container p {
+    text-align: center;
+}
+
+.api-error-container img {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+/* Media query  */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .tab-container {
+        margin-top: 2rem;
+        width: 80%;
+    }
+
+    .tab {
+        font-size: 0.75rem;
+    }
+    .parameter-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .parameter {
+        width: 100%;
+    }
+}
